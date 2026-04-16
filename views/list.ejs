@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티 - 목록</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="/">🏠 MY COMMUNITY</a>
+            <div>
+                <% if (user) { %>
+                    <span>환영합니다, <b><%= user.nickname %></b>님!</span>
+                    <a href="/logout" class="btn">로그아웃</a>
+                <% } else { %>
+                    <a href="/login" class="btn">로그인</a>
+                    <a href="/signup" class="btn btn-primary">회원가입</a>
+                <% } %>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>자유게시판</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>시각</th>
+                    <th>댓글</th>
+                    <th>추천</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% posts.forEach(post => { %>
+                    <tr>
+                        <td><%= post.id %></td>
+                        <td><a href="/post/<%= post.id %>"><%= post.title %></a></td>
+                        <td><%= post.author %></td>
+                        <td><%= formatTime(post.created_at) %></td>
+                        <td><%= post.comment_count %></td>
+                        <td><%= post.likes %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <div style="text-align: right;">
+            <% if (user) { %>
+                <a href="/write" class="btn btn-primary">글쓰기</a>
+            <% } %>
+        </div>
+
+        <div class="pagination">
+            <% for(let i=1; i <= totalPages; i++) { %>
+                <a href="/?page=<%= i %>" class="btn <%= currentPage === i ? 'btn-primary' : '' %>"><%= i %></a>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

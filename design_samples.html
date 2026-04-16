@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 디자인 샘플</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 20px; background-color: #eee; }
+        .sample-container { margin-bottom: 50px; border: 2px solid #000; padding: 20px; background: #fff; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 10px; }
+        
+        /* 공통 구조 */
+        .preview { display: flex; gap: 20px; flex-wrap: wrap; }
+        .box { flex: 1; min-width: 300px; padding: 15px; border-radius: 8px; }
+
+        /* 1. 다크 모드 (Dark) */
+        .theme-dark { background-color: #121212; color: #e0e0e0; }
+        .theme-dark .post-item { border-bottom: 1px solid #333; padding: 10px 0; }
+        .theme-dark .btn { background: #bb86fc; color: #000; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .theme-dark a { color: #03dac6; text-decoration: none; }
+
+        /* 2. 밝은 플랫 (Bright Flat) */
+        .theme-flat { background-color: #ffffff; color: #212529; border: 1px solid #dee2e6; }
+        .theme-flat .post-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .theme-flat .btn { background: #007bff; color: #fff; border: none; padding: 8px 15px; border-radius: 0; cursor: pointer; }
+        .theme-flat a { color: #007bff; text-decoration: none; }
+        .theme-flat .box { box-shadow: none; border: 1px solid #eee; }
+
+        /* 3. 레트로 (Retro - Win95 style) */
+        .theme-retro { background-color: #c0c0c0; color: #000; font-family: 'MS Sans Serif', 'Arial', sans-serif; border: 2px solid #fff; border-right-color: #808080; border-bottom-color: #808080; }
+        .theme-retro .post-item { border: 1px inset #fff; background: #fff; padding: 5px; margin-bottom: 5px; }
+        .theme-retro .btn { background: #c0c0c0; border: 2px solid #fff; border-right-color: #000; border-bottom-color: #000; padding: 4px 10px; cursor: pointer; outline: 1px solid #808080; }
+        .theme-retro a { color: #000080; font-weight: bold; }
+        .theme-retro .title-bar { background: #000080; color: #fff; padding: 3px 5px; font-weight: bold; margin-bottom: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <h1>게시판 디자인 컨셉 제안</h1>
+    <p>아래 세 가지 스타일 중 가장 마음에 드는 것을 골라주세요!</p>
+
+    <!-- 1. 다크 모드 -->
+    <div class="sample-container">
+        <h2>1. 다크 컨셉 (Modern Dark)</h2>
+        <div class="preview">
+            <div class="box theme-dark">
+                <h3>글 목록</h3>
+                <div class="post-item"><a href="#">안녕하세요, 첫 글입니다.</a> (5)</div>
+                <div class="post-item"><a href="#">Neon DB 연결 테스트 중</a> (2)</div>
+                <div class="post-item"><a href="#">이 디자인 어떤가요?</a> (0)</div>
+                <br>
+                <button class="btn">글쓰기</button>
+            </div>
+            <div class="box theme-dark">
+                <h3>글 본문</h3>
+                <p><strong>제목: 안녕하세요</strong></p>
+                <p>작성자: 익명 | 2026-04-17</p>
+                <hr style="border-color:#333">
+                <p>다크 모드는 눈이 편안하고 현대적인 느낌을 줍니다.</p>
+                <button class="btn">좋아요 10</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 밝은 플랫 -->
+    <div class="sample-container">
+        <h2>2. 밝은 컨셉 (Bright Flat)</h2>
+        <div class="preview">
+            <div class="box theme-flat">
+                <h3>글 목록</h3>
+                <div class="post-item"><a href="#">깔끔한 디자인이 최고죠</a> (1)</div>
+                <div class="post-item"><a href="#">버튼에 그림자가 없어요</a> (4)</div>
+                <div class="post-item"><a href="#">군더더기 없는 스타일</a> (0)</div>
+                <br>
+                <button class="btn">글 쓰 기</button>
+            </div>
+            <div class="box theme-flat">
+                <h3>글 본문</h3>
+                <p><strong>제목: 깔끔한 디자인</strong></p>
+                <p>작성자: 익명 | 2026-04-17</p>
+                <hr style="border-color:#eee">
+                <p>플랫 디자인은 가독성이 좋고 전문적인 느낌을 줍니다.</p>
+                <button class="btn">좋아요</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 레트로 -->
+    <div class="sample-container">
+        <h2>3. 레트로 컨셉 (Retro 95)</h2>
+        <div class="preview">
+            <div class="box theme-retro" style="background-color: #008080; padding: 10px;">
+                <div class="theme-retro" style="padding: 10px; border: 2px solid #fff;">
+                    <div class="title-bar">Community.exe</div>
+                    <div class="post-item"><a href="#">반갑읍니다...</a> [3]</div>
+                    <div class="post-item"><a href="#">PC통신 느낌 아시는분?</a> [12]</div>
+                    <div class="post-item"><a href="#">윈도우 95 스타일입니다.</a> [0]</div>
+                    <br>
+                    <button class="btn">글쓰기(W)</button>
+                </div>
+            </div>
+            <div class="box theme-retro" style="background-color: #008080; padding: 10px;">
+                <div class="theme-retro" style="padding: 10px; border: 2px solid #fff;">
+                    <div class="title-bar">Post_View.hlp</div>
+                    <p><strong>제목: 반갑읍니다...</strong></p>
+                    <p>글쓴이: 홍길동 | 96-04-17</p>
+                    <div style="border: 2px inset #fff; background: #fff; padding: 10px; height: 60px;">
+                        옛날 감성의 투박하지만 정겨운 디자인입니다.
+                    </div>
+                    <br>
+                    <button class="btn">추천!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

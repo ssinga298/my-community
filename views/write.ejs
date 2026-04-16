@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header><div class="container nav"><a href="/">🏠 MY COMMUNITY</a></div></header>
+    <div class="container" style="max-width: 600px;">
+        <h2><%= post ? '글 수정하기' : '새 글 쓰기' %></h2>
+        <form action="/write" method="POST">
+            <% if (post) { %> <input type="hidden" name="id" value="<%= post.id %>"> <% } %>
+            <div class="form-group">
+                <label>제목</label>
+                <input type="text" name="title" class="form-control" value="<%= post ? post.title : '' %>" required>
+            </div>
+            <div class="form-group">
+                <label>내용</label>
+                <textarea name="content" class="form-control" rows="10" required><%= post ? post.content : '' %></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><%= post ? '수정 완료' : '등록하기' %></button>
+            <a href="/" class="btn">취소</a>
+        </form>
+    </div>
+</body>
+</html>

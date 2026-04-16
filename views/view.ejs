@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title><%= post.title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="/">🏠 MY COMMUNITY</a>
+            <a href="/" class="btn">목록으로</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="post-header">
+            <h1><%= post.title %></h1>
+            <div class="post-meta">
+                작성자: <b><%= post.author %></b> | 
+                날짜: <%= formatTime(post.created_at) %> | 
+                추천: <%= post.likes %>
+            </div>
+        </div>
+
+        <div class="post-content">
+            <%- post.content.replace(/\n/g, '<br>') %>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <a href="/like/<%= post.id %>" class="btn">👍 추천하기</a>
+            <% if (user && user.nickname === post.author) { %>
+                <a href="/edit/<%= post.id %>" class="btn">수정</a>
+                <a href="/delete/<%= post.id %>" class="btn" onclick="return confirm('정말 삭제할까요?')">삭제</a>
+            <% } %>
+        </div>
+
+        <h3>댓글 (<%= comments.length %>)</h3>
+        <div class="comment-list">
+            <% comments.forEach(comment => { %>
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <b><%= comment.author %></b> | <%= formatTime(comment.created_at) %>
+                    </div>
+                    <div><%= comment.content %></div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <% if (user) { %>
+                <form action="/comment" method="POST">
+                    <input type="hidden" name="post_id" value="<%= post.id %>">
+                    <textarea name="content" class="form-control" placeholder="댓글을 남겨보세요" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">댓글 등록</button>
+                </form>
+            <% } else { %>
+                <p><a href="/login">로그인</a> 후 댓글을 작성할 수 있습니다.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
